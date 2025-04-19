@@ -37,7 +37,7 @@ class Dev(Configuration):
   CSRF_COOKIE_SAMESITE = "None"
   SESSION_COOKIE_SAMESITE = "None"
 
-  OMDB_KEY = values.SecretValue()
+  OMDB_KEY = "ag1313t"
 
   # Application definition
 
@@ -49,6 +49,7 @@ class Dev(Configuration):
       'django.contrib.messages',
       'django.contrib.staticfiles',
       'movies',
+      'gh',
   ]
 
   MIDDLEWARE = [
