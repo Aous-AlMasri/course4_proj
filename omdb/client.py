@@ -81,6 +81,12 @@ class OmdbClient:
       logger.info("Fetching page %d", page)
       resp = self.make_request({"s": search, "type": "movie", "page": str(page)})
       resp_body = resp.json()
+
+      # Check for API failure or no results (GPT solution)
+      if resp_body.get("Response") == "False":
+        logger.warning("OMDB API returned an error: %s", resp_body.get("Error", "Unknown error"))
+        break
+
       if total_results is None:
         total_results = int(resp_body["totalResults"])
 
